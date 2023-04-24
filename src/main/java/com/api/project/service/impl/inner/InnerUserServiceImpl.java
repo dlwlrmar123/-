@@ -24,6 +24,11 @@ public class InnerUserServiceImpl implements InnerUserService {
         }
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("accessKey", accessKey);
-        return userMapper.selectOne(queryWrapper);
+//        return userMapper.selectOne(queryWrapper);
+        User user = userMapper.selectOne(queryWrapper);
+        if (user == null){
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        return user;
     }
 }

@@ -16,5 +16,7 @@ public class InterfaceInfoVO extends InterfaceInfo {
      */
     private Integer totalNum;
 
+    private Integer leftNum;
+
     private static final long serialVersionUID = 1L;
 }

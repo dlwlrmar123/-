@@ -1,6 +1,8 @@
 package com.api.project.model.dto.interfaceinfo;
 
 import com.api.project.common.PageRequest;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +15,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@TableName("interface_info")
 public class InterfaceInfoQueryRequest extends PageRequest implements Serializable {
 
     /**
@@ -34,6 +37,11 @@ public class InterfaceInfoQueryRequest extends PageRequest implements Serializab
      * 接口地址
      */
     private String url;
+
+    /**
+     * 请求参数
+     */
+    private String requestParams;
 
     /**
      * 请求头
@@ -59,5 +67,7 @@ public class InterfaceInfoQueryRequest extends PageRequest implements Serializab
      * 创建人
      */
     private Long userId;
+
+    private static final long serialVersionUID = 1L;
 
 }

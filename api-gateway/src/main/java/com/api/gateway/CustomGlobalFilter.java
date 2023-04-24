@@ -47,7 +47,7 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
     @DubboReference
     private InnerUserInterfaceInfoService innerUserInterfaceInfoService;
 
-    private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1");
+//    private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1");
 
     private static final String INTERFACE_HOST = "http://localhost:8123";
 
@@ -66,11 +66,11 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         log.info("请求来源地址：" + request.getRemoteAddress());
         ServerHttpResponse response = exchange.getResponse();
 
-        // 2. 访问控制 - 黑白名单
-        if (!IP_WHITE_LIST.contains(sourceAddress)) {
-            response.setStatusCode(HttpStatus.FORBIDDEN);
-            return response.setComplete();
-        }
+//        // 2. 访问控制 - 黑白名单
+//        if (!IP_WHITE_LIST.contains(sourceAddress)) {
+//            response.setStatusCode(HttpStatus.FORBIDDEN);
+//            return response.setComplete();
+//        }
 
         // 3. 用户鉴权（判断 ak、sk 是否合法）
         HttpHeaders headers = request.getHeaders();
@@ -128,6 +128,15 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
         // todo 是否还有调用次数
         // 请求转发，调用模拟接口 + 响应日志
         // return chain.filter(exchange);
+        //查询接口id和用户id
+        Long interfaceInfoId = interfaceInfo.getId();
+        Long invokeUserId = invokeUser.getId();
+        // 是否还有调用次数
+        boolean hasLeftNum = innerUserInterfaceInfoService.invokeLeftNum(interfaceInfoId, invokeUserId);
+        //没有次数抛出依次
+        if (!hasLeftNum){
+            return handleNoAuth(response);
+        }
         return handleResponse(exchange, chain, interfaceInfo.getId(), invokeUser.getId());
     }
 

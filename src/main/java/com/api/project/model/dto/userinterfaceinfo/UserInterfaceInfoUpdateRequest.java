@@ -1,5 +1,6 @@
 package com.api.project.model.dto.userinterfaceinfo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
  * @TableName product
  */
 @Data
+@TableName("user_interface_info")
 public class UserInterfaceInfoUpdateRequest implements Serializable {
 
     /**
@@ -18,9 +20,19 @@ public class UserInterfaceInfoUpdateRequest implements Serializable {
     private Long id;
 
     /**
-     * 总调用次数
+     * 接口 id
      */
-    private Integer totalNum;
+    private Long interfaceInfoId;
+
+    /**
+     * 调用用户 id
+     */
+    private Long userId;
+
+//    /**
+//     * 总调用次数
+//     */
+//    private Integer totalNum;
 
     /**
      * 剩余调用次数

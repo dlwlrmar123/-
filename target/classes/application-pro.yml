@@ -1,9 +1,0 @@
-spring:
-  devtools:
-    restart:
-      enable: false
-
-logging:
-  level:
-    root: error
-    com.cbj.mapper.*: error

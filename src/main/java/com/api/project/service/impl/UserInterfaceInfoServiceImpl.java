@@ -1,5 +1,6 @@
 package com.api.project.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.api.project.common.ErrorCode;
@@ -8,6 +9,8 @@ import com.api.project.mapper.UserInterfaceInfoMapper;
 import com.api.project.service.UserInterfaceInfoService;
 import com.api.common.model.entity.UserInterfaceInfo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
@@ -19,6 +22,9 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         if (userInterfaceInfo == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
+        Long interfaceInfoId = userInterfaceInfo.getInterfaceInfoId();
+        Long userId = userInterfaceInfo.getUserId();
+        Integer leftNum = userInterfaceInfo.getLeftNum();
         // 创建时，所有参数必须非空
         if (add) {
             if (userInterfaceInfo.getInterfaceInfoId() <= 0 || userInterfaceInfo.getUserId() <= 0) {
@@ -40,9 +46,34 @@ public class UserInterfaceInfoServiceImpl extends ServiceImpl<UserInterfaceInfoM
         updateWrapper.eq("interfaceInfoId", interfaceInfoId);
         updateWrapper.eq("userId", userId);
 
-//        updateWrapper.gt("leftNum", 0);
+        updateWrapper.gt("leftNum", 0);
         updateWrapper.setSql("leftNum = leftNum - 1, totalNum = totalNum + 1");
         return this.update(updateWrapper);
+    }
+
+    @Override
+    public List<UserInterfaceInfo> listTopInvokeInterfaceInfo(int limit) {
+
+        return null;
+    }
+
+    @Override
+    public boolean addInvokeTimes(long interfaceInfoId, long userId, int leftNum) {
+
+        //查询接口信息
+        QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("userId",userId);
+        queryWrapper.eq("interfaceInfoId",interfaceInfoId);
+        UserInterfaceInfo oldUserInterfaceInfo = this.getOne(queryWrapper);
+        if (oldUserInterfaceInfo == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        //查询剩余调用次数
+        int oldLeftNum = oldUserInterfaceInfo.getLeftNum();
+        leftNum+=oldLeftNum;
+        //在原调用次数上增加调用次数
+        oldUserInterfaceInfo.setLeftNum(leftNum);
+        return this.updateById(oldUserInterfaceInfo);
     }
 
 }

@@ -1,5 +1,7 @@
 package com.api.project.model.dto.interfaceinfo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * 更新请求
  */
 @Data
+@TableName("interface_info")
 public class InterfaceInfoUpdateRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;

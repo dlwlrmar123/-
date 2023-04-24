@@ -1,6 +1,9 @@
 package com.api.project.controller;
 
+import com.api.common.model.entity.InterfaceInfo;
+import com.api.project.service.InterfaceInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.api.project.annotation.AuthCheck;
 import com.api.project.common.*;
@@ -22,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,6 +41,9 @@ public class UserInterfaceInfoController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private InterfaceInfoService interfaceInfoService;
 
 
     /**
@@ -116,6 +123,33 @@ public class UserInterfaceInfoController {
     }
 
     /**
+     * 增加接口调用次数
+     * 在接口原的次数上增加调用次数
+     * @param userInterfaceInfoUpdateRequest
+     * @param request
+     * @return
+     */
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    @PostMapping("/updatetimes")
+    public BaseResponse<Boolean> updateUserInterfaceInfoCount(@RequestBody UserInterfaceInfoUpdateRequest userInterfaceInfoUpdateRequest,
+                                                              HttpServletRequest request) {
+        if (userInterfaceInfoUpdateRequest == null || userInterfaceInfoUpdateRequest.getInterfaceInfoId() <= 0) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+        }
+        UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
+        BeanUtils.copyProperties(userInterfaceInfoUpdateRequest, userInterfaceInfo);
+        // 参数校验
+        userInterfaceInfoService.validUserInterfaceInfo(userInterfaceInfo, false);
+        // 仅本人或管理员可修改
+        if (!userService.isAdmin(request)) {
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
+        }
+        boolean result = userInterfaceInfoService.addInvokeTimes(userInterfaceInfo.getInterfaceInfoId(), userInterfaceInfo.getUserId(),userInterfaceInfo.getLeftNum());
+        return ResultUtils.success(result);
+    }
+
+
+    /**
      * 根据 id 获取
      */
     @GetMapping("/get")
@@ -143,30 +177,73 @@ public class UserInterfaceInfoController {
         return ResultUtils.success(userInterfaceInfoList);
     }
 
+//    /**
+//     * 分页获取列表
+//     */
+//    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+//    @GetMapping("/list/page")
+//    public BaseResponse<Page<UserInterfaceInfo>> listUserInterfaceInfoByPage(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest, HttpServletRequest request) {
+//        if (userInterfaceInfoQueryRequest == null) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
+//        UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
+//        BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
+//        long current = userInterfaceInfoQueryRequest.getCurrent();
+//        long size = userInterfaceInfoQueryRequest.getPageSize();
+//        String sortField = userInterfaceInfoQueryRequest.getSortField();
+//        String sortOrder = userInterfaceInfoQueryRequest.getSortOrder();
+//        // 限制爬虫
+//        if (size > 50) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
+//        QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
+//        queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
+//                sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
+//        Page<UserInterfaceInfo> userInterfaceInfoPage = userInterfaceInfoService.page(new Page<>(current, size), queryWrapper);
+//        return ResultUtils.success(userInterfaceInfoPage);
+//    }
+
     /**
      * 分页获取列表
      */
-    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     @GetMapping("/list/page")
-    public BaseResponse<Page<UserInterfaceInfo>> listUserInterfaceInfoByPage(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest, HttpServletRequest request) {
-        if (userInterfaceInfoQueryRequest == null) {
+    public BaseResponse<Page<InterfaceInfo>> listUserInterfaceInfoByPage(HttpServletRequest request) {
+        if (request == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
-        BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
-        long current = userInterfaceInfoQueryRequest.getCurrent();
-        long size = userInterfaceInfoQueryRequest.getPageSize();
-        String sortField = userInterfaceInfoQueryRequest.getSortField();
-        String sortOrder = userInterfaceInfoQueryRequest.getSortOrder();
-        // 限制爬虫
-        if (size > 50) {
-            throw new BusinessException(ErrorCode.PARAMS_ERROR);
-        }
+        long current = 1;
+        long size = 5;
+//        // 限制爬虫
+//        if (size > 10) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
         QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
-        queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
-                sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
+        User loginUser = userService.getLoginUser(request);
+        if (loginUser == null) {
+            throw new BusinessException(ErrorCode.NOT_LOGIN_ERROR);
+        }
+        queryWrapper.eq("userId", loginUser.getId()).orderByDesc("updateTime");
         Page<UserInterfaceInfo> userInterfaceInfoPage = userInterfaceInfoService.page(new Page<>(current, size), queryWrapper);
-        return ResultUtils.success(userInterfaceInfoPage);
+        List<UserInterfaceInfo> userInterfaceInfoList= userInterfaceInfoPage.getRecords();
+        if (userInterfaceInfoList == null) {
+            throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+        }
+        List<InterfaceInfo> interfaceInfoList = new ArrayList<>();
+        long totalCount = userInterfaceInfoList.stream().count();
+        for (UserInterfaceInfo userInterfaceInfo : userInterfaceInfoList) {
+            InterfaceInfo interfaceInfoVo = new InterfaceInfo();
+            InterfaceInfo interfaceInfoById = interfaceInfoService.getById(userInterfaceInfo.getInterfaceInfoId());
+            BeanUtils.copyProperties(interfaceInfoById, interfaceInfoVo);
+            interfaceInfoList.add(interfaceInfoVo);
+        }
+        Page<InterfaceInfo> interfaceInfoPage = new Page<>();
+        interfaceInfoPage.setRecords(interfaceInfoList);
+        interfaceInfoPage.setTotal(totalCount);
+        interfaceInfoPage.setCurrent(1);
+        interfaceInfoPage.setSize(5);
+        interfaceInfoPage.setOrders(userInterfaceInfoPage.orders());
+        return ResultUtils.success(interfaceInfoPage);
     }
 
 

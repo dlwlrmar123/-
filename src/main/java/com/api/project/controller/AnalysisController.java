@@ -1,5 +1,6 @@
 package com.api.project.controller;
 
+import com.api.project.service.UserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.api.project.annotation.AuthCheck;
 import com.api.project.common.BaseResponse;
@@ -13,6 +14,7 @@ import com.api.common.model.entity.InterfaceInfo;
 import com.api.common.model.entity.UserInterfaceInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,12 +39,42 @@ public class AnalysisController {
     @Resource
     private InterfaceInfoService interfaceInfoService;
 
+//    /**
+//     * 接口调用Top3
+//     * @return
+//     */
+//    @GetMapping("/top/interface/invoke")
+//    @AuthCheck(mustRole = "admin")
+//    public BaseResponse<List<InterfaceInfoVO>> listTopInvokeInterfaceInfo() {
+//        List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(3);
+//        Map<Long, List<UserInterfaceInfo>> interfaceInfoIdObjMap = userInterfaceInfoList.stream()
+//                .collect(Collectors.groupingBy(UserInterfaceInfo::getInterfaceInfoId));
+//        QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.in("id", interfaceInfoIdObjMap.keySet());
+//        List<InterfaceInfo> list = interfaceInfoService.list(queryWrapper);
+//        if (CollectionUtils.isEmpty(list)) {
+//            throw new BusinessException(ErrorCode.SYSTEM_ERROR);
+//        }
+//        List<InterfaceInfoVO> interfaceInfoVOList = list.stream().map(interfaceInfo -> {
+//            InterfaceInfoVO interfaceInfoVO = new InterfaceInfoVO();
+//            BeanUtils.copyProperties(interfaceInfo, interfaceInfoVO);
+//            int totalNum = interfaceInfoIdObjMap.get(interfaceInfo.getId()).get(0).getTotalNum();
+//            interfaceInfoVO.setTotalNum(totalNum);
+//            return interfaceInfoVO;
+//        }).collect(Collectors.toList());
+//        return ResultUtils.success(interfaceInfoVOList);
+//    }
+
     @GetMapping("/top/interface/invoke")
     @AuthCheck(mustRole = "admin")
+//    @Transactional
     public BaseResponse<List<InterfaceInfoVO>> listTopInvokeInterfaceInfo() {
-        List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(3);
+        List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(5);
         Map<Long, List<UserInterfaceInfo>> interfaceInfoIdObjMap = userInterfaceInfoList.stream()
                 .collect(Collectors.groupingBy(UserInterfaceInfo::getInterfaceInfoId));
+//        if (interfaceInfoIdObjMap == null) {
+//            throw new BusinessException(ErrorCode.PARAMS_ERROR);
+//        }
         QueryWrapper<InterfaceInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.in("id", interfaceInfoIdObjMap.keySet());
         List<InterfaceInfo> list = interfaceInfoService.list(queryWrapper);
