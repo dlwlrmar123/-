@@ -1,0 +1,118 @@
+Index: src/main/resources/application-dev.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n  devtools:\r\n    restart:\r\n      enable: true\r\n\r\nlogging:\r\n  level:\r\n    com.cbj.mapper.*: debug\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application-dev.yml b/src/main/resources/application-dev.yml
+--- a/src/main/resources/application-dev.yml	(revision a8e5ce8a8c01d94f87cf810d9a2f17e6af495cbe)
++++ b/src/main/resources/application-dev.yml	(date 1682348323743)
+@@ -2,7 +2,23 @@
+   devtools:
+     restart:
+       enable: true
++    # 数据库配置
++    # todo 需替换配置
++    datasource:
++      driver-class-name: com.mysql.cj.jdbc.Driver
++      url: jdbc:mysql://localhost:3306/ge_api
++      username: root
++      password: 123456
++    # Redis 配置
++    # todo 需替换配置
++  #  redis:
++  #    database: 1
++  #    host: localhost
++  #    port: 6379
++  #    timeout: 5000
++  #    password: 123456
+ 
+ logging:
+   level:
+     com.cbj.mapper.*: debug
++
+Index: src/main/resources/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n  application:\r\n    name: api-backend\r\n\r\n#  profiles:\r\n#    active: dev\r\n#    include: password # 导入application-password.yml(此文件未用git管理)\r\n\r\n  # DataSource Config\r\n  datasource:\r\n    driver-class-name: com.mysql.cj.jdbc.Driver\r\n    url: jdbc:mysql://localhost:3306/api?serverTimezone=Asia/Shanghai\r\n    username: root\r\n    password: root\r\n  mvc:\r\n    pathmatch:\r\n      matching-strategy: ANT_PATH_MATCHER\r\n  # session 失效时间（分钟）\r\n  session:\r\n    timeout: 86400\r\n    store-type: redis\r\n  # redis 配置\r\n  redis:\r\n    port: 6379\r\n    host: localhost\r\n#    password: ${redis.password}\r\n    database: 0\r\n\r\n#  # 文件上传\r\n#  servlet:\r\n#    multipart:\r\n#      # 大小限制\r\n#      max-file-size: 10MB\r\n\r\nserver:\r\n  port: 7529\r\n  servlet:\r\n    context-path: /api\r\n#    # cookie 30 天过期\r\n#    session:\r\n#      cookie:\r\n#        max-age: 2592000\r\n#        domain: 服务器IP\r\n\r\nmybatis-plus:\r\n  configuration:\r\n    map-underscore-to-camel-case: false\r\n    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl\r\n  global-config:\r\n    db-config:\r\n      logic-delete-field: isDelete # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)\r\n      logic-delete-value: 1 # 逻辑已删除值(默认为 1)\r\n      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)\r\n## 对象存储\r\n## todo 需替换配置\r\n#cos:\r\n#  client:\r\n#    accessKey: xxx\r\n#    secretKey: xxx\r\n#    region: xxx\r\n#    bucket: xxx\r\n#api:\r\n#  client:\r\n#    access-key: api\r\n#    secret-key: abcdefgh\r\ndubbo:\r\n  application:\r\n#    name: api-backend\r\n    name: dubbo-springboot-demo-provider\r\n  protocol:\r\n    name: dubbo\r\n    port: -1\r\n  registry:\r\n    id: nacos-registry\r\n    address: nacos://localhost:8848
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application.yml b/src/main/resources/application.yml
+--- a/src/main/resources/application.yml	(revision a8e5ce8a8c01d94f87cf810d9a2f17e6af495cbe)
++++ b/src/main/resources/application.yml	(date 1682659146374)
+@@ -23,7 +23,7 @@
+   redis:
+     port: 6379
+     host: localhost
+-#    password: ${redis.password}
++    password: xxx
+     database: 0
+ 
+ #  # 文件上传
+@@ -33,14 +33,15 @@
+ #      max-file-size: 10MB
+ 
+ server:
+-  port: 7529
++  address: 0.0.0.0
++  port: 8103
+   servlet:
+     context-path: /api
+-#    # cookie 30 天过期
+-#    session:
+-#      cookie:
+-#        max-age: 2592000
+-#        domain: 服务器IP
++    # cookie 30 天过期
++    session:
++      cookie:
++        max-age: 2592000
++        domain: localhost
+ 
+ mybatis-plus:
+   configuration:
+Index: src/main/resources/application-pro.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring:\r\n  devtools:\r\n    restart:\r\n      enable: false\r\n\r\nlogging:\r\n  level:\r\n    root: error\r\n    com.cbj.mapper.*: error\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application-pro.yml b/src/main/resources/application-pro.yml
+--- a/src/main/resources/application-pro.yml	(revision a8e5ce8a8c01d94f87cf810d9a2f17e6af495cbe)
++++ b/src/main/resources/application-pro.yml	(date 1682659146406)
+@@ -1,9 +1,31 @@
++server:
++  port: 8103
+ spring:
+   devtools:
+     restart:
+       enable: false
++    # 数据库配置
++    # todo 需替换配置
++    datasource:
++      driver-class-name: com.mysql.cj.jdbc.Driver
++      url: jdbc:mysql://xxx:3306/api?serverTimezone=Asia/Shanghai
++      username: xxx
++      password: xxx
++#     Redis 配置
++#     todo 需替换配置
++    redis:
++      database: 1
++      host: xxxx
++      port: xxx
++      timeout: 5000
++      password: xxx
++
+ 
+ logging:
+   level:
+     root: error
+     com.cbj.mapper.*: error
++mybatis-plus:
++  configuration:
++    # 生产环境关闭日志
++    log-impl: ''
+\ No newline at end of file
