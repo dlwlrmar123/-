@@ -4,135 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bcd6bee-aa7c-4466-9739-f42db6ab53c3" name="Changes" comment=" Commit Message">
-      <change afterPath="$PROJECT_DIR$/.idea/git_toolbox_prj.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fa14f47f-439c-499f-9439-8c3b39210f0c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fa14f47f-439c-499f-9439-8c3b39210f0c.xml" afterDir="false" />
+    <list default="true" id="3bcd6bee-aa7c-4466-9739-f42db6ab53c3" name="Changes" comment="修改接口调用逻辑，添加用户查询接口调用记录">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/java/com/api/sdk/ApiClientConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/java/com/api/sdk/client/ApiClient.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/java/com/api/sdk/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/java/com/api/sdk/utils/SignUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/resources/META-INF/spring.factories" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-client-sdk/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/model/entity/InterfaceInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/model/entity/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/model/entity/UserInterfaceInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/model/enums/InterfaceInfoStatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/model/vo/UserVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/service/InnerInterfaceInfoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/service/InnerUserInterfaceInfoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-common/src/main/java/com/api/common/service/InnerUserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/api/gateway/CustomGlobalFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/api/gateway/CustomGlobalFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/controller/AnalysisController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/controller/AnalysisController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/controller/InterfaceInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/controller/InterfaceInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/controller/UserInterfaceInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/controller/UserInterfaceInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/mapper/InterfaceInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/mapper/InterfaceInfoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoAddRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoInvokeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoInvokeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoQueryRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/interfaceinfo/InterfaceInfoUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoAddRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoAddRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoQueryRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoQueryRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoUpdateRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoUpdateRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/vo/InterfaceInfoVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/model/vo/InterfaceInfoVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/model/vo/UserVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/InterfaceInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/InterfaceInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/UserInterfaceInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/UserInterfaceInfoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/InterfaceInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/InterfaceInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/UserInterfaceInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/UserInterfaceInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerInterfaceInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerInterfaceInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerUserInterfaceInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerUserInterfaceInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/api/project/service/impl/inner/InnerUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-pro.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-pro.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserInterfaceInfoMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserInterfaceInfoMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/api-backend-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/api-backend-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-pro.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/banner.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/BackEndApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/annotation/AuthCheck.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/aop/AuthInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/aop/LogInterceptor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/BaseResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/DeleteRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/ErrorCode.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/IdRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/PageRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/common/ResultUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/config/CorsConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/config/Knife4jConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/config/MyBatisPlusConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/constant/CommonConstant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/constant/UserConstant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/controller/AnalysisController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/controller/InterfaceInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/controller/UserInterfaceInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/exception/BusinessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/exception/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/mapper/InterfaceInfoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/mapper/PostMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/mapper/UserInterfaceInfoMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/mapper/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/interfaceinfo/InterfaceInfoAddRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/interfaceinfo/InterfaceInfoInvokeRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/interfaceinfo/InterfaceInfoQueryRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/interfaceinfo/InterfaceInfoUpdateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/post/PostAddRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/post/PostDoThumbRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/post/PostQueryRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/post/PostUpdateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/user/UserAddRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/user/UserLoginRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/user/UserQueryRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/user/UserRegisterRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/user/UserUpdateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoAddRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoQueryRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/dto/userinterfaceinfo/UserInterfaceInfoUpdateRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/entity/Post.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/enums/InterfaceInfoStatusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/enums/PostGenderEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/enums/PostReviewStatusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/vo/InterfaceInfoVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/vo/PostVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/model/vo/UserVO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/provider/DemoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/provider/DemoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/InterfaceInfoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/UserInterfaceInfoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/InterfaceInfoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/UserInterfaceInfoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/inner/InnerInterfaceInfoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/inner/InnerUserInterfaceInfoServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/api/project/service/impl/inner/InnerUserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/InterfaceInfoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/PostMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserInterfaceInfoMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/api/project/service/UserInterfaceInfoServiceTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/api/project/service/UserServiceTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/banner.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banner.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +67,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../api-interface" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -252,7 +132,11 @@
       <workItem from="1682039569879" duration="33837000" />
       <workItem from="1682127240182" duration="31494000" />
       <workItem from="1682215684175" duration="21221000" />
-      <workItem from="1682320398821" duration="1988000" />
+      <workItem from="1682320398821" duration="13574000" />
+      <workItem from="1682394536317" duration="7834000" />
+      <workItem from="1682420259290" duration="2110000" />
+      <workItem from="1682436538139" duration="183000" />
+      <workItem from="1682656951697" duration="2495000" />
     </task>
     <task id="LOCAL-00001" summary=" Commit Message">
       <created>1681888309211</created>
@@ -261,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681888309211</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="修改接口调用逻辑，添加用户查询接口调用记录">
+      <created>1682322859827</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1682322859827</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,7 +172,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value=" Commit Message" />
-    <option name="LAST_COMMIT_MESSAGE" value=" Commit Message" />
+    <MESSAGE value="修改接口调用逻辑，添加用户查询接口调用记录" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改接口调用逻辑，添加用户查询接口调用记录" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

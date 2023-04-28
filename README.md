@@ -17,7 +17,7 @@ API接口调用平台，帮助企业、个人统一开放接口，减少沟通�
 
 架构图：
 
-![img](D:\myprojects\api-backend-master\src\main\resources\img\api.png)
+![img](https://github.com/dlwlrmar123/yuninterfaces/blob/master/api.png)
 
 技术选型：
 
